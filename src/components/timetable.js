@@ -7,7 +7,8 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-
+import { ContactSupportOutlined } from "@material-ui/icons";
+import { CSVLink, CSVDownload } from "react-csv";
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -35,49 +36,61 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const weekDays = ["MON", "TUE", "WED", "THU", "FRI", "SAT"];
+const weekDays = ["PON", "TUE", "WED", "THU", "FRI", "SAT"];
 
 export default function Timetable({ timeTable, section }) {
+
   const classes = useStyles();
 
   return (
-    <TableContainer className={classes.root} component={Paper}>
-      <Table className={classes.table} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell key={"sec" + section}>
-              Section {section}
-            </StyledTableCell>
-            {timeTable ? (
-              timeTable[0]?.map((day, i) => (
-                <StyledTableCell key={"lectures" + section + i} align="right">
-                  Lecture {i + 1}
-                </StyledTableCell>
-              ))
-            ) : (
-              <StyledTableCell key={"lectures" + section}></StyledTableCell>
-            )}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {timeTable?.map((row, i) => (
-            <StyledTableRow key={i + section}>
-              <StyledTableCell
-                key={weekDays[i] + section}
-                component="th"
-                scope="column"
-              >
-                {weekDays[i]}
+    <div>
+      <TableContainer className={classes.root} component={Paper}>
+        <Table className={classes.table} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell key={"sec" + section}>
+                Section {section}
               </StyledTableCell>
-              {row.map((r, j) => (
-                <StyledTableCell key={r + j + section} align="right">
-                  {r ? r : "FREE"}
+              {timeTable ? (
+                timeTable[0]?.map((day, i) => (
+                  <StyledTableCell key={"lectures" + section + i} align="right">
+                    Lecture {i + 1}
+                  </StyledTableCell>
+                ))
+              ) : (
+                <StyledTableCell key={"lectures" + section}></StyledTableCell>
+              )}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {timeTable?.map((row, i) => (
+              <StyledTableRow key={i + section}>
+                <StyledTableCell
+                  key={weekDays[i] + section}
+                  component="th"
+                  scope="column"
+                >
+                  {weekDays[i]}
                 </StyledTableCell>
-              ))}
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+                {row.map((r, j) => (
+                  <StyledTableCell key={r + j + section} align="right">
+                    {r ? r : "FREE"}
+                  </StyledTableCell>
+                ))}
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <CSVLink
+        data={timeTable}
+        filename={`Raspored za ${section}`}
+        className="btn btn-primary"
+        target="_blank"
+      >
+        Preuzmi raspored za {section}
+      </CSVLink>
+      ;
+    </div>
   );
 }

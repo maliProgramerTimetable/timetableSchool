@@ -1,12 +1,11 @@
-import React from 'react';
-import Timetable from './timetable';
-import { makeStyles } from '@material-ui/core/styles';
-
+import React from "react";
+import Timetable from "./timetable";
+import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   cardHolder: {
-    display: 'flex',
-    flexFlow: 'row wrap',
-    justifyContent: 'space-evenly',
+    display: "flex",
+    flexFlow: "row wrap",
+    justifyContent: "space-evenly",
     marginTop: 10,
   },
 }));
