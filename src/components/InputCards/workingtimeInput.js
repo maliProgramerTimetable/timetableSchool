@@ -98,7 +98,7 @@ export default function WorkingtimeInput({
             type="number"
             className={classes.textField}
             id="day"
-            label="Dan"
+            label= {strings.working_days_day_label}
             select
             required
             error={!!dayError}
@@ -125,7 +125,7 @@ export default function WorkingtimeInput({
             type="number"
             className={classes.textField}
             id="periods"
-            label="Br časova"
+            label= {strings.subject_table_titles_contact_hrs}
             select
             required
             error={!!periodError}
@@ -152,7 +152,7 @@ export default function WorkingtimeInput({
             type="number"
             className={classes.textField}
             id="days"
-            label="Br razreda"
+            label= {strings.class_amount_label}
             select
             required
             // onChange={roomChange}

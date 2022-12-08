@@ -8,6 +8,7 @@ import {
   MenuItem,
 } from "@material-ui/core";
 import docs from "../../constants/docs";
+import { strings } from "../../translation/strings";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -126,13 +127,13 @@ export default function LectureInput({
   return (
     <Card className={classes.root}>
       <CardContent className={classes.content}>
-        <h3 style={{ textAlign: "left" }}>Add Lectures</h3>
+        <h3 style={{ textAlign: "left" }}>{strings.add_lectures_title}</h3>
         <div>
           <TextField
             type="number"
             className={classes.textField}
             id="teacher"
-            label="Teacher"
+            label= {strings.lecture_table_titles_title}
             select
             required
             error={!!teacherError}
@@ -160,7 +161,7 @@ export default function LectureInput({
             type="number"
             className={classes.textField}
             id="section"
-            label="Section"
+            label={strings.lecture_table_titles_section}
             select
             required
             error={!!sectionError}
@@ -188,7 +189,7 @@ export default function LectureInput({
             type="number"
             className={classes.textField}
             id="subject"
-            label="Subject"
+            label={strings.lecture_table_titles_subject}
             select
             required
             error={!!subjectError}
@@ -216,7 +217,7 @@ export default function LectureInput({
             type="number"
             className={classes.textField}
             id="lecture"
-            label="Lecture Arrangement"
+            label={strings.lecture_arrangement_label}
             select
             required
             error={!!lecturearrError}
@@ -251,7 +252,7 @@ export default function LectureInput({
           size="medium"
           onClick={addButton}
         >
-          + Add Lecture
+          {strings.add_lectures_button}
         </Button>
       </CardContent>
     </Card>

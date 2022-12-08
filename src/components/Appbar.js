@@ -5,6 +5,7 @@ import {
 } from "@material-ui/core"
 import { ExitToApp, AccountCircle } from "@material-ui/icons"
 import firebase from "firebase"
+import { strings } from "../translation/strings";
 
 const useStyles = makeStyles((theme) => ({
 	title: {
@@ -78,7 +79,7 @@ export default function PrimaryAppBar() {
 							color="inherit"
 						>
 							<ExitToApp />
-							<div className="f5">Odjavi se</div>
+							<div className="f5">{strings.navbar_signout}</div>
 						</IconButton>
 		</div>
 	)

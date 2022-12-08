@@ -6,6 +6,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import { strings } from "../translation/strings";
 import Paper from "@material-ui/core/Paper";
 
 const StyledTableCell = withStyles((theme) => ({
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const weekDays = ["MON", "TUE", "WED", "THU", "FRI", "SAT"];
+const weekDays = ["PON  ", "UTO", "SRI", "ČET", "PET", "SUB"];
 
 export default function Timetable({ timeTable, section }) {
   const classes = useStyles();
@@ -71,7 +72,7 @@ export default function Timetable({ timeTable, section }) {
               </StyledTableCell>
               {row.map((r, j) => (
                 <StyledTableCell key={r + j + section} align="right">
-                  {r ? r : "FREE"}
+                  {r ? r : strings.free_label}
                 </StyledTableCell>
               ))}
             </StyledTableRow>

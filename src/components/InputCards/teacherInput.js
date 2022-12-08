@@ -74,7 +74,7 @@ export default function TeacherInput({ teachers, setTeachers }) {
           className={classes.textField}
           required
           id="teacher-name"
-          label="Ime nastavnika"
+          label= {strings.textfield_teachers_name_label}
           variant="outlined"
           value={name}
           onChange={nameChange}
@@ -87,7 +87,7 @@ export default function TeacherInput({ teachers, setTeachers }) {
           required
           className={classes.textField}
           id="teacher-code"
-          label="Kod nastavnika"
+          label= {strings.textfield_teachers_code_label}
           variant="outlined"
           error={!!codeError}
           helperText={codeError}
