@@ -60,12 +60,12 @@ const useStyles = makeStyles((theme) => ({
     width: "200px",
     height: "100%",
     position: "fixed",
-    backgroundColor: "#ABC4FF",
+    backgroundColor: "#264653",
   },
   content: {
     width: "100%",
     marginLeft: "200px",
-    backgroundColor: "#D7E3FC",
+    backgroundColor: "rgb(32, 117, 109)",
   },
 }));
 

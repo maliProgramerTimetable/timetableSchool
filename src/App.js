@@ -3,6 +3,7 @@ import "./App.css"
 import "tachyons"
 import LoginScreen from "./Pages/LoginScreen"
 import HomeScreen from "./Pages/HomeScreen"
+import SubjectsScreen from "./Pages/Subjects"
 
 const App = () => {
 	const [isSigned, setIsSigned] = useState(false)

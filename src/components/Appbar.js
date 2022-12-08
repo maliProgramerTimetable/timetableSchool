@@ -16,18 +16,26 @@ const useStyles = makeStyles((theme) => ({
 		justifyContent: "space-between",
 		alignItems: "center",
 		height: "100%",
+		color: "white",
 	},
 	links: {
 		display: "flex",
 		flexDirection: "column",
 		justifyContent: "center",
-		alignItems: "flex-start",
+		alignItems: "center",
 	},
 	link: {
 		margin: "10px 0px",
 		textDecoration: "none",
-		color: "black",
 		fontSize: "1.2rem",
+		color: "white",
+	},
+	linksInner: {
+		marginTop: "30px",
+		display: "flex",
+		flexDirection: "column",
+		justifyContent: "center",
+		alignItems: "center",
 	},
 }))
 
@@ -37,6 +45,7 @@ export default function PrimaryAppBar() {
 
 	return (
 		<div className={classes.sidebarInner}>
+			<div className={classes.links}>
 						<IconButton
 							edge="end"
 							aria-label="Logged In User"
@@ -50,9 +59,12 @@ export default function PrimaryAppBar() {
 									: "User"}
 							</div>
 						</IconButton>
-						<div className={classes.links}>
-							<a href="/razredi" className={classes.link} >Razredi</a>
+						<div className={classes.linksInner}>
 							<a href="/predmeti" className={classes.link} >Predmeti</a>
+							<a href="/razredi" className={classes.link} >Razredi</a>
+							<a href="/radni-dani" className={classes.link} >Radni dani</a>
+							<a href="/raspored" className={classes.link} >Raspored</a>
+						</div>
 						</div>
 						<IconButton
 							edge="end"

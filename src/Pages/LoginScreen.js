@@ -1,77 +1,68 @@
-import React, { useEffect, useState } from "react"
-import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
-import firebase from "../firebase/firebase"
-import Logo from "../components/Logo/Logo"
-import Particles from "react-particles-js"
-import Loader from "react-loader-spinner"
-
-const particlesOptions = {
-	particles: {
-		number: {
-			value: 100,
-			density: {
-				enable: true,
-				value_area: 700,
-			},
-		},
-	},
-}
+import React, { useEffect, useState } from "react";
+import firebase from "../firebase/firebase";
+import "./LoginScreen.css";
 
 const LoginScreen = ({ setIsSigned }) => {
-	const [loading, setLoading] = useState(true)
+	const [error, setError] = useState("");
+  const handleLogin = () => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email.toString(), password)
+      .then((userCredential) => {
+        setIsSigned(true);
+      })
+      .catch((error) => {
+		setError(error.message);
+	    });
+  };
 
-	let uiConfig = {
-		signInFlow: "popup",
-		signInOptions: [
-			firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-			firebase.auth.EmailAuthProvider.PROVIDER_ID,
-			firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-		],
-		callbacks: {
-			signInSuccessWithAuthResult: () => false,
-		},
-	}
-	useEffect(() => {
-		let isMounted = true
-		firebase.auth().onAuthStateChanged((user) => {
-			console.log(user)
-			// setIsLoggedIn(!!user)
-			if (user) {
-				setIsSigned(true)
-				console.log("User Logged In")
-			} else {
-				console.log("User Signed Out")
-				setIsSigned(false)
-			}
-			if (isMounted) setLoading(false)
-		})
-		return () => (isMounted = false)
-	}, [setIsSigned])
-	return (
-		<div>
-			{loading ? (
-				<div className="loading">
-					<div id="logo-name">Activity Scheduler</div>
-					<Loader
-						color="#FFFFFF"
-						width={200}
-						height={130}
-						type="Audio"
-					/>
-				</div>
-			) : (
-				<div>
-					<Particles className="particles" params={particlesOptions} />
-					<Logo></Logo>
-					<div className="firebaseUI">
-						<StyledFirebaseAuth
-							uiConfig={uiConfig}
-							firebaseAuth={firebase.auth()}
-						/>
-					</div>
-				</div>
-			)}
-		</div>
-	)
-}
-export default LoginScreen
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      console.log(user);
+      if (user) {
+        setIsSigned(true);
+        console.log("User Logged In");
+      } else {
+        console.log("User Signed Out");
+        setIsSigned(false);
+      }
+    });
+  }, [setIsSigned]);
+
+  return (
+	<div className="loginScreen">
+    <div class="screen-1">
+      <div className="email">
+        <div className="conatiener"></div>
+        <label for="email">Email Address</label>
+        <div className="sec-2">
+          <ion-icon name="mail-outline"></ion-icon>
+          <input type="email" name="email" placeholder="Username@gmail.com" onChange={(e) => setEmail(e.target.value)} />
+        </div>
+      </div>
+      <div className="password">
+        <label for="password">Password</label>
+        <div className="sec-2">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <input
+            className="pas"
+            type="password"
+            name="password"
+            placeholder="············"
+			onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+      </div>
+	  <div className="err">{error.message}</div>
+      <button className="login" onClick={handleLogin}>
+        Login{" "}
+      </button>
+    </div>
+	</div>
+  );
+};
+
+export default LoginScreen;
