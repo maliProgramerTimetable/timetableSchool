@@ -16,6 +16,7 @@ import GenerateTimetable from "../components/GenerateTimetable";
 import "./HomeScreen.css";
 import docs from "../constants/docs";
 import firebase from "firebase";
+import { strings } from "../translation/strings";
 
 const useStyles = makeStyles((theme) => ({
   cardHolder: {
@@ -284,7 +285,7 @@ const HomeScreen = () => {
             onClick={generateButton}
             disabled={!lectures.length || loading}
           >
-            Generate Timetable
+            {strings. generate_label}
           </Button>
           {loading && (
             <CircularProgress

@@ -18,6 +18,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
 import docs from "../../constants/docs";
+import { strings } from "../../translation/strings";
 
 function createData(day, lectureCount) {
   return { day, lectureCount };
@@ -54,13 +55,13 @@ const headCells = [
     id: "day",
     numeric: false,
     disablePadding: true,
-    label: "Day",
+    label: strings.working_days_day_label,
   },
   {
     id: "lectureCount",
     numeric: true,
     disablePadding: false,
-    label: "Lectures",
+    label: strings.working_days_lecture_label,
   },
 ];
 
@@ -187,7 +188,7 @@ const EnhancedTableToolbar = (props) => {
           id="tableTitle"
           component="div"
         >
-          Working Days
+         {strings.working_days_label}
         </Typography>
       )}
 

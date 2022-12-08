@@ -107,7 +107,7 @@ export default function SubjectInput({ subjects, setSubjects }) {
           value={title}
           required
           id="course-title"
-          label="Naslov"
+          label= {strings.textfield_subject_label}
           variant="outlined"
           error={!!titleError}
           helperText={titleError}
@@ -120,7 +120,7 @@ export default function SubjectInput({ subjects, setSubjects }) {
           value={code}
           onChange={codeChange}
           id="course-code"
-          label="Kod predmeta"
+          label= {strings.textfield_subject_code_label}
           variant="outlined"
           error={!!codeError}
           helperText={codeError}
@@ -131,7 +131,7 @@ export default function SubjectInput({ subjects, setSubjects }) {
           type="number"
           className={!creditHrsError ? classes.hrs : ""}
           id="credit-hours"
-          label="Broj sati"
+          label= {strings.textfield_subject_hours_label}
           select
           required
           error={!!creditHrsError}
@@ -153,7 +153,7 @@ export default function SubjectInput({ subjects, setSubjects }) {
           type="number"
           className={!contantHrsError ? classes.hrs : ""}
           id="contact-hours"
-          label="Broj sati"
+          label= {strings.textfield_subject_hours_label}
           select
           required
           error={!!contantHrsError}

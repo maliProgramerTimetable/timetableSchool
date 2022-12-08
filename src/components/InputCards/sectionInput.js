@@ -78,7 +78,7 @@ export default function SectionInput({ sections, setSections }) {
           className={classes.textField}
           required
           id="class-title"
-          label="Naziv razreda"
+          label= {strings.textfield_class_label}
           variant="outlined"
           value={title}
           onChange={titleChange}
@@ -91,7 +91,7 @@ export default function SectionInput({ sections, setSections }) {
           required
           className={classes.textField}
           id="class-code"
-          label="Kod razreda"
+          label= {strings.textfield_class_code_label}
           variant="outlined"
           error={!!codeError}
           helperText={codeError}
