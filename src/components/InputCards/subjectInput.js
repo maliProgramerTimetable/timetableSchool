@@ -15,6 +15,8 @@ const useStyles = makeStyles((theme) => ({
     margin: 10,
     borderRadius: 20,
     minHeight: 360,
+    display: "flex",
+    justifyContent: "space-between",
   },
   title: {
     fontSize: 14,
@@ -23,14 +25,29 @@ const useStyles = makeStyles((theme) => ({
     margin: 5,
   },
   hrs: {
-    margin: "5% 10%",
+   marginTop: "10px",
+   marginBottom:"10px",
+   width:"95%",
+    
   },
   hours: {
     display: "flex",
     justifyContent: "center",
     alignItems: "baseline",
   },
-  button: {},
+  globe:{
+    fontSize: 400,
+    color: "rgba(0, 0, 0, 0.08)",
+    
+  },
+  inputs: {
+    marginLeft: "20%", 
+    marginTop: "3%",
+  },
+  button: {
+    width:"95%",
+    marginLeft:"5px"
+  },
 }));
 
 export default function SubjectInput({ subjects, setSubjects }) {
@@ -44,7 +61,6 @@ export default function SubjectInput({ subjects, setSubjects }) {
   const [titleError, setTitleError] = React.useState("");
   const [codeError, setCodeError] = React.useState("");
   const [contantHrsError, setcontantHrsError] = React.useState("");
-  const [creditHrsError, setcreditHrsError] = React.useState("");
 
   const titleChange = (event) => {
     setTitle(event.target.value);
@@ -54,15 +70,12 @@ export default function SubjectInput({ subjects, setSubjects }) {
   };
   const contacthrsChange = (event) => {
     setcontantHrs(event.target.value);
-  };
-  const creditrsChange = (event) => {
     setcreditHrs(event.target.value);
   };
   const setRequiredError = () => {
     !title ? setTitleError("Required") : setTitleError("");
     !code ? setCodeError("Required") : setCodeError("");
     !contactHrs ? setcontantHrsError("Required") : setcontantHrsError("");
-    !creditHrs ? setcreditHrsError("Required") : setcreditHrsError("");
   };
   const setEmptyTextfields = () => {
     setTitle("");
@@ -73,7 +86,6 @@ export default function SubjectInput({ subjects, setSubjects }) {
     setTitleError("");
     setCodeError("");
     setcontantHrsError("");
-    setcreditHrsError("");
   };
   const addButton = () => {
     let temp = [...subjects];
@@ -99,6 +111,7 @@ export default function SubjectInput({ subjects, setSubjects }) {
   };
   return (
     <Card className={classes.root}>
+      <div className={classes.inputs}>
       <h3>{strings.add_subject_title}</h3>
       <div>
         <TextField
@@ -107,7 +120,7 @@ export default function SubjectInput({ subjects, setSubjects }) {
           value={title}
           required
           id="course-title"
-          label= {strings.textfield_subject_label}
+          label="Naslov"
           variant="outlined"
           error={!!titleError}
           helperText={titleError}
@@ -120,40 +133,19 @@ export default function SubjectInput({ subjects, setSubjects }) {
           value={code}
           onChange={codeChange}
           id="course-code"
-          label= {strings.textfield_subject_code_label}
+          label="Kod predmeta"
           variant="outlined"
           error={!!codeError}
           helperText={codeError}
         />
       </div>
       <div className={classes.hours}>
-        <TextField
-          type="number"
-          className={!creditHrsError ? classes.hrs : ""}
-          id="credit-hours"
-          label= {strings.textfield_subject_hours_label}
-          select
-          required
-          error={!!creditHrsError}
-          helperText={creditHrsError}
-          onChange={creditrsChange}
-          value={creditHrs}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant="outlined"
-        >
-          {[1, 2, 3, 4, 5].map((option) => (
-            <MenuItem key={option} value={option}>
-              {option}
-            </MenuItem>
-          ))}
-        </TextField>
+       
         <TextField
           type="number"
           className={!contantHrsError ? classes.hrs : ""}
           id="contact-hours"
-          label= {strings.textfield_subject_hours_label}
+          label="Broj sati"
           select
           required
           error={!!contantHrsError}
@@ -184,6 +176,10 @@ export default function SubjectInput({ subjects, setSubjects }) {
       >
         {strings.add_subject_button}
       </Button>
+      </div>
+      <div>
+        <i className={`fa-solid fa-globe ${classes.globe}`}></i>
+      </div>
     </Card>
   );
 }

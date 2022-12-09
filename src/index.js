@@ -5,17 +5,36 @@ import App from "./App"
 import * as serviceWorker from "./serviceWorker"
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import "tachyons"
+import firebase from "firebase"
+
 
 import SubjectsScreen from "./Pages/Subjects"
+import ClassesScreen from "./Pages/ClassesScreen"
+import WorkingTimeScreen from "./Pages/WorkingTimeScreen"
+import LoginScreen from "./Pages/LoginScreen"
+
+const db = firebase.firestore();
 
 const routes = createBrowserRouter([
+	{
+		path: '/login',
+		element: <LoginScreen  />,
+	},
 	  {
 		path: '/',
-		element: <App />,
+		element: <App  />,
 	  },
 	  {
 		path: '/predmeti',
-		element: <SubjectsScreen />,
+		element: <SubjectsScreen db={db} />,
+	  },
+	  {
+		path: '/razredi',
+		element: <ClassesScreen db={db} />,
+	  },
+	  {
+		path: '/radni-dani',
+		element: <WorkingTimeScreen db={db} />,
 	  },
 ]);
 

@@ -1,22 +1,11 @@
 import React, { useState, useCallback } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import PrimaryAppBar from "../components/Appbar";
-import SubjectInput from "../components/InputCards/subjectInput";
-import SectionInput from "../components/InputCards/sectionInput";
-import TeacherInput from "../components/InputCards/teacherInput";
-import SubjectTable from "../components/Tables/subjectTable";
-import SectionTable from "../components/Tables/sectionTable";
-import TeacherTable from "../components/Tables/teacherTable";
-import LectureInput from "../components/lectures/lectureInput";
-import LectureTable from "../components/lectures/lectureTable";
-import WorkingtimeInput from "../components/InputCards/workingtimeInput";
-import WorkingtimeTable from "../components/Tables/workingtimeTable";
 import { Button, CircularProgress } from "@material-ui/core";
 import GenerateTimetable from "../components/GenerateTimetable";
 import "./HomeScreen.css";
 import docs from "../constants/docs";
 import firebase from "firebase";
-import { strings } from "../translation/strings";
 
 const useStyles = makeStyles((theme) => ({
   cardHolder: {
@@ -30,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "0% 5%",
   },
   genButton: {
-    marginBottom: 25,
+    margin: 25,
   },
   wrapper: {
     position: "relative",
@@ -61,61 +50,25 @@ const useStyles = makeStyles((theme) => ({
     width: "200px",
     height: "100%",
     position: "fixed",
-    backgroundColor: "#264653",
+    backgroundColor: "white",
   },
   content: {
     width: "100%",
     marginLeft: "200px",
-    backgroundColor: "rgb(32, 117, 109)",
+    height: "100vh",
   },
 }));
 
-const weekSchedule = { Pon: 0, Uto: 0, WED: 0, THU: 0, FRI: 0, SAT: 0 };
-
 const HomeScreen = () => {
-  const db = firebase.firestore();
-  const userRef = db.collection(firebase.auth().currentUser.uid);
   const classes = useStyles();
 
-  const [subjects, setSubjects] = useState([]);
-  const [sections, setSections] = useState([]);
-  const [teachers, setTeachers] = useState([]);
   const [lectures, setLectures] = useState([]);
-  const [workingTime, setworkingTime] = useState(weekSchedule);
   const [loading, setloading] = useState(false);
   const [timetable, setTimetable] = useState(undefined);
 
-  const updateDB = (sub, docType) => {
-    console.log(sub);
-    switch (docType) {
-      case "subjects":
-        setSubjects(sub);
-        break;
-      case "sections":
-        setSections(sub);
-        break;
-      case "teachers":
-        setTeachers(sub);
-        break;
-      case "lectures":
-        setLectures(sub);
-        break;
-      case "workingTime":
-        setworkingTime(sub);
-        break;
-      default:
-        console.error("Wrong Document");
-    }
-    userRef
-      .doc(docType)
-      .set(docType === docs.workingTime ? sub : { ...Object(sub) })
-      .then((e) => console.log("saved"))
-      .catch((e) => console.error("error", e));
-  };
-
   const fetchTimetable = useCallback(async () => {
     const db = firebase.firestore();
-    const userRef = db.collection(firebase.auth().currentUser.uid);
+    const userRef = db.collection(JSON.parse(localStorage.getItem("uid")));
 
     const temp = {};
 
@@ -136,7 +89,7 @@ const HomeScreen = () => {
 
   const fetchRecords = useCallback(async () => {
     const db = firebase.firestore();
-    const userRef = db.collection(firebase.auth().currentUser.uid);
+    const userRef = db.collection(JSON.parse(localStorage.getItem("uid")));
     userRef
       .get()
       .then((snapShot) => {
@@ -146,22 +99,9 @@ const HomeScreen = () => {
               ? doc.data()
               : Object.values(doc.data());
           switch (doc.id) {
-            case docs.subjects:
-              setSubjects(records);
-              break;
-            case docs.sections:
-              setSections(records);
-              break;
-            case docs.teachers:
-              setTeachers(records);
-              break;
             case docs.lectures:
               setLectures(records);
               break;
-            case docs.workingTime:
-              setworkingTime(records);
-              break;
-
             default:
               console.error("Wrong Document");
           }
@@ -193,89 +133,12 @@ const HomeScreen = () => {
         setloading(false);
       });
   };
-  // console.log(subjects);
-  // console.log(sections);
-  // console.log(teachers);
-  // console.log(lectures);
-  // console.log(workingTime);
-  // console.log(timetable);
-
   return (
-    <div className={classes.container} >
+    <div className={classes.container}>
       <div className={classes.sidebar}>
-        <PrimaryAppBar />
+        <PrimaryAppBar raspored={true} />
       </div>
       <div className={classes.content}>
-        <div className={classes.cardHolder}>
-          <div>
-            <SubjectInput
-              className={classes.card}
-              subjects={subjects}
-              setSubjects={updateDB}
-              docs={docs}
-            />
-            <SubjectTable
-              subjects={subjects}
-              setSubjects={updateDB}
-              docType={docs}
-            />
-          </div>
-          <div>
-            <SectionInput
-              className={classes.card}
-              sections={sections}
-              setSections={updateDB}
-              docs={docs}
-            />
-            <SectionTable
-              sections={sections}
-              setSections={updateDB}
-              docs={docs}
-            />
-          </div>
-          <div>
-            <TeacherInput
-              className={classes.card}
-              teachers={teachers}
-              setTeachers={updateDB}
-              docs={docs}
-            />
-            <TeacherTable
-              teachers={teachers}
-              setTeachers={updateDB}
-              docs={docs}
-            />
-          </div>
-
-          <div className={classes.lectures}>
-            <LectureInput
-              lectures={lectures}
-              setLectures={updateDB}
-              docs={docs}
-              subjects={subjects}
-              sections={sections}
-              teachers={teachers}
-            />
-            <LectureTable
-              lectures={lectures}
-              setLectures={updateDB}
-              docs={docs}
-            />
-          </div>
-          <div>
-            <WorkingtimeInput
-              workingTime={workingTime}
-              setworkingTime={updateDB}
-              sections={sections}
-              docs={docs}
-            />
-            <WorkingtimeTable
-              workingTime={workingTime}
-              setworkingTime={updateDB}
-              docs={docs}
-            />
-          </div>
-        </div>
         <div className={classes.wrapper}>
           <Button
             variant="contained"
@@ -285,7 +148,7 @@ const HomeScreen = () => {
             onClick={generateButton}
             disabled={!lectures.length || loading}
           >
-            {strings. generate_label}
+            Generate Timetable
           </Button>
           {loading && (
             <CircularProgress

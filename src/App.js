@@ -1,16 +1,15 @@
-import React, { useState } from "react"
+import React from "react"
 import "./App.css"
 import "tachyons"
-import LoginScreen from "./Pages/LoginScreen"
 import HomeScreen from "./Pages/HomeScreen"
-import SubjectsScreen from "./Pages/Subjects"
 
 const App = () => {
-	const [isSigned, setIsSigned] = useState(false)
-
+	if(!localStorage.getItem("uid")){
+		window.location.href = "/login"
+	}
 	return (
 		<div className="App">
-			{!isSigned ? <LoginScreen setIsSigned={setIsSigned} /> : <HomeScreen />}
+			<HomeScreen />
 		</div>
 	)
 }
