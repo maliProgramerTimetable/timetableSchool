@@ -18,6 +18,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
 import docs from "../../constants/docs";
+import { strings } from "../../translation/strings";
 
 function createData(name, code, contantHrs) {
   return { name, code, contantHrs };
@@ -54,14 +55,14 @@ const headCells = [
     id: "name",
     numeric: false,
     disablePadding: true,
-    label: "Title",
+    label: strings.section_table_titles_title,
   },
-  { id: "code", numeric: true, disablePadding: false, label: "Code" },
+  { id: "code", numeric: true, disablePadding: false, label: strings.section_table_titles_code },
   {
     id: "contantHrs",
     numeric: true,
     disablePadding: false,
-    label: "Contact Hrs",
+    label: strings.subject_table_titles_contact_hrs,
   },
 ];
 
@@ -184,7 +185,7 @@ const EnhancedTableToolbar = (props) => {
           id="tableTitle"
           component="div"
         >
-          Subject Table
+          {strings.subject_table_title}
         </Typography>
       )}
 

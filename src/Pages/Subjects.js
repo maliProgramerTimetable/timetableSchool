@@ -195,5 +195,4 @@ const SubjectsScreen = ({db}) => {
     );
 };
 
-
 export default SubjectsScreen
