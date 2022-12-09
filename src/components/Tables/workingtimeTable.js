@@ -157,7 +157,6 @@ const EnhancedTableToolbar = (props) => {
 
   const deleteRow = () => {
     let temp = { ...workingTime };
-    console.log(selected);
     selected.forEach((element) => {
       temp[element] = 0;
     });

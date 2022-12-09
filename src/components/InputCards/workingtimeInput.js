@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import {
   TextField,
   Card,
-  CardContent,
   Button,
   MenuItem,
 } from "@material-ui/core";
@@ -12,30 +11,31 @@ import { strings } from "../../translation/strings";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    minWidth: 275,
+    marginTop: "100px",
     margin: 10,
     borderRadius: 20,
   },
   content: {
-    [theme.breakpoints.down("sm")]: {
-      padding: "5% 10%",
-    },
-    [theme.breakpoints.up("md")]: {
-      display: "flex",
-      justifyContent: "center",
-    },
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  inputs: {
+    marginLeft: "20%",
+    marginTop: "3%",
+  },
+  icon: {
+    fontSize: 400,
+    color: "rgba(0, 0, 0, 0.1)",
+    margin: "20px",
   },
   textField: {
     margin: 5,
-    minWidth: 200,
-    [theme.breakpoints.up("md")]: {
-      minWidth: 150,
-    },
+    width: 250,
   },
   button: {
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: "5%",
-    },
+    margin: 5,
+    width: 250,
+    height: 50,
   },
 }));
 
@@ -90,9 +90,9 @@ export default function WorkingtimeInput({
 
   return (
     <Card className={classes.root}>
-      <CardContent className={classes.content}>
+      <div className={classes.content}>
+        <div className={classes.inputs}>
         <h3 style={{ textAlign: "left" }}>{strings.working_days_periods_label}</h3>
-
         <div>
           <TextField
             type="number"
@@ -181,7 +181,11 @@ export default function WorkingtimeInput({
         >
           {strings.working_days_button}
         </Button>
-      </CardContent>
+        </div>
+        <div>
+          <i className={`fa-solid fa-calendar-days ${classes.icon}`}></i>
+        </div>
+        </div>
     </Card>
   );
 }

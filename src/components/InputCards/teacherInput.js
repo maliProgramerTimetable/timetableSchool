@@ -10,12 +10,28 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 20,
     margin: 10,
     minHeight: 360,
-    display: "grid",
+    display: "flex",
+    justifyContent: "space-between",
+
   },
   textField: {
     margin: 5,
   },
-  button: {},
+  inputs: {
+    marginLeft: "20%",
+    marginTop: "3%",
+  },
+  button: {
+    marginTop: "5px",
+    width: "95%",
+    height: "50px",
+    marginLeft: "5px",
+  },
+  image: {
+    fontSize: 400,
+    color: "rgba(0, 0, 0, 0.08)",
+    marginRight: "20px",
+  },
 }));
 
 export default function TeacherInput({ teachers, setTeachers }) {
@@ -68,46 +84,51 @@ export default function TeacherInput({ teachers, setTeachers }) {
 
   return (
     <Card className={classes.root}>
-      <h3>{strings.add_teacher_title}</h3>
-      <div>
-        <TextField
-          className={classes.textField}
-          required
-          id="teacher-name"
-          label="Ime nastavnika"
-          variant="outlined"
-          value={name}
-          onChange={nameChange}
-          error={!!nameError}
-          helperText={nameError}
-        />
+      <div className={classes.inputs}>
+        <h3>{strings.add_teacher_title}</h3>
+        <div>
+          <TextField
+            className={classes.textField}
+            required
+            id="teacher-name"
+            label="Ime nastavnika"
+            variant="outlined"
+            value={name}
+            onChange={nameChange}
+            error={!!nameError}
+            helperText={nameError}
+          />
+        </div>
+        <div>
+          <TextField
+            required
+            className={classes.textField}
+            id="teacher-code"
+            label="Kod nastavnika"
+            variant="outlined"
+            error={!!codeError}
+            helperText={codeError}
+            value={code}
+            onChange={codeChange}
+            onKeyDown={(e) => {
+              if (e.keyCode === 13) addButton();
+            }}
+          />
+        </div>
+        <div>
+          <Button
+            className={classes.button}
+            variant="contained"
+            color="primary"
+            size="medium"
+            onClick={addButton}
+          >
+            {strings.add_teacher_button}
+          </Button>
+        </div>
       </div>
       <div>
-        <TextField
-          required
-          className={classes.textField}
-          id="teacher-code"
-          label="Kod nastavnika"
-          variant="outlined"
-          error={!!codeError}
-          helperText={codeError}
-          value={code}
-          onChange={codeChange}
-          onKeyDown={(e) => {
-            if (e.keyCode === 13) addButton();
-          }}
-        />
-      </div>
-      <div>
-        <Button
-          className={classes.button}
-          variant="contained"
-          color="primary"
-          size="medium"
-          onClick={addButton}
-        >
-          {strings.add_teacher_button}
-        </Button>
+        <i class={`fa-solid fa-graduation-cap ${classes.image}`}></i>
       </div>
     </Card>
   );

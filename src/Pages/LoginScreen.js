@@ -2,14 +2,15 @@ import React, { useEffect, useState } from "react";
 import firebase from "../firebase/firebase";
 import "./LoginScreen.css";
 
-const LoginScreen = ({ setIsSigned }) => {
+const LoginScreen = () => {
 	const [error, setError] = useState("");
   const handleLogin = () => {
     firebase
       .auth()
       .signInWithEmailAndPassword(email.toString(), password)
       .then((userCredential) => {
-        setIsSigned(true);
+        localStorage.setItem("uid", JSON.stringify(userCredential.user.uid));
+        window.location.href = "/";
       })
       .catch((error) => {
 		setError(error.message);
@@ -21,16 +22,13 @@ const LoginScreen = ({ setIsSigned }) => {
   
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
-      console.log(user);
       if (user) {
-        setIsSigned(true);
-        console.log("User Logged In");
+        localStorage.setItem("uid", JSON.stringify(user.uid));
       } else {
-        console.log("User Signed Out");
-        setIsSigned(false);
+        localStorage.removeItem("uid");
       }
     });
-  }, [setIsSigned]);
+  }, []);
 
   return (
 	<div className="loginScreen">

@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 		justifyContent: "space-between",
 		alignItems: "center",
 		height: "100%",
-		color: "white",
+		color: "rgba(0, 0, 0, 0.8)",
 	},
 	links: {
 		display: "flex",
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 		margin: "10px 0px",
 		textDecoration: "none",
 		fontSize: "1.2rem",
-		color: "white",
+		color: "rgba(0, 0, 0, 0.5)",
 	},
 	linksInner: {
 		marginTop: "30px",
@@ -37,9 +37,12 @@ const useStyles = makeStyles((theme) => ({
 		justifyContent: "center",
 		alignItems: "center",
 	},
+	active: {
+		color: "rgba(0, 0, 0, 0.8)",
+	},
 }))
 
-export default function PrimaryAppBar() {
+export default function PrimaryAppBar({predmeti, razredi, radniDani, raspored}) {
 	const classes = useStyles()
 
 
@@ -60,10 +63,10 @@ export default function PrimaryAppBar() {
 							</div>
 						</IconButton>
 						<div className={classes.linksInner}>
-							<a href="/predmeti" className={classes.link} >Predmeti</a>
-							<a href="/razredi" className={classes.link} >Razredi</a>
-							<a href="/radni-dani" className={classes.link} >Radni dani</a>
-							<a href="/raspored" className={classes.link} >Raspored</a>
+							<a href="/predmeti" className={`${classes.link} ${predmeti ? classes.active : ""}`} >Predmeti</a>
+							<a href="/razredi" className={`${classes.link} ${razredi ? classes.active : ""}`} >Razredi</a>
+							<a href="/radni-dani" className={`${classes.link} ${radniDani ? classes.active : ""}`} >Radni dani</a>
+							<a href="/" className={`${classes.link} ${raspored ? classes.active : ""}`} >Raspored</a>
 						</div>
 						</div>
 						<IconButton
@@ -72,7 +75,8 @@ export default function PrimaryAppBar() {
 							aria-haspopup="true"
 							onClick={() => {
 								firebase.auth().signOut()
-								console.log("signout")
+								localStorage.removeItem("uid")
+								window.location.href = "/login"
 							}}
 							className={classes.title}
 							color="inherit"
