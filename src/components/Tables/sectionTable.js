@@ -205,7 +205,6 @@ EnhancedTableToolbar.propTypes = {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // width: "100%",
     margin: 10,
   },
   paper: {
@@ -214,7 +213,6 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
   },
   table: {
-    // minWidth: 750,
   },
   visuallyHidden: {
     border: 0,
@@ -229,7 +227,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// Section Table Export Function
 export default function SectionTable({ sections, setSections }) {
   const rows = sections
     ? sections.map((section) => createData(section[0], section[1]))

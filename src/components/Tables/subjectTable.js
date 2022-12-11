@@ -212,7 +212,6 @@ EnhancedTableToolbar.propTypes = {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // width: "100%",
     margin: 10,
   },
   paper: {
@@ -221,7 +220,6 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
   },
   table: {
-    // minWidth: 750,
   },
   visuallyHidden: {
     border: 0,
@@ -236,7 +234,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// Subject Table Export
 
 export default function SubjectTable({ subjects, setSubjects }) {
   const rows = subjects

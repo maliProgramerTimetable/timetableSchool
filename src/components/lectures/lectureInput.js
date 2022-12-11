@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const lectureArrangement = [["1"], ["1 - 1", "2"], ["1 - 1 - 1", "2 - 1", "3"]];
+const lectureArrangement = [["1"], ["1 - 1", "2"], ["1 - 1 - 1", "2 - 1"], ["1 - 1 - 1 - 1", "2 - 1 - 1", "2-2"], ["1 - 1 - 1 - 1 - 1", "2 - 1 - 1 - 1", "2-2-1"]];
 export default function LectureInput({
   lectures,
   setLectures,

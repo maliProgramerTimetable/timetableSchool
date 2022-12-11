@@ -4,11 +4,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #264653;
   height: 100vh;
 }
 .screen-1 {
-    background: #7496a3;
+    background: white;
     padding: 2em;
     display: flex;
     flex-direction: column;
@@ -98,7 +97,7 @@
   .screen-1 .footer {
     display: flex;
     font-size: 0.7em;
-    color: #5e5e5e;
+    color: white;
     gap: 14em;
     padding-bottom: 1.5em;
   }

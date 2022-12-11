@@ -48,7 +48,6 @@ export default function WorkingtimeInput({
 
   const [day, setday] = useState("");
   const [period, setperiod] = useState("");
-  // const [room, setroom] = useState(sections.length);
 
   const [dayError, setdayError] = useState("");
   const [periodError, setperiodError] = useState("");
@@ -60,9 +59,6 @@ export default function WorkingtimeInput({
   const periodChange = (event) => {
     setperiod(event.target.value);
   };
-  // const roomChange = (event) => {
-  //   setroom(event.target.value);
-  // };
 
   const setRequiredError = () => {
     !day ? setdayError("Required") : setdayError("");
@@ -81,7 +77,6 @@ export default function WorkingtimeInput({
     if (day && period) {
       let temp = { ...workingTime };
       temp[day] = period;
-      // temp = temp.filter((value) => value !== day);
       setworkingTime(temp, docs.workingTime);
 
       setEmptyTextfields();
@@ -155,7 +150,6 @@ export default function WorkingtimeInput({
             label="Br razreda"
             select
             required
-            // onChange={roomChange}
             value={sections.length}
             onKeyDown={(e) => {
               if (e.keyCode === 13) addButton();

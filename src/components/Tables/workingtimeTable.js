@@ -213,7 +213,6 @@ EnhancedTableToolbar.propTypes = {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // width: "100%",
     margin: 10,
   },
   paper: {
@@ -222,7 +221,6 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
   },
   table: {
-    // minWidth: 750,
   },
   visuallyHidden: {
     border: 0,
@@ -237,7 +235,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// Section Table Export Function
 export default function WorkingtimeTable({ workingTime, setworkingTime }) {
   const rows = Object.entries(workingTime)
     .filter((e) => e[1] !== 0)

@@ -6,7 +6,6 @@ import { strings } from "../../translation/strings";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // minWidth: 275,
     borderRadius: 20,
     margin: 10,
     minHeight: 360,

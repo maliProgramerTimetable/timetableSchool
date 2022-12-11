@@ -64,12 +64,6 @@ const headCells = [
     disablePadding: false,
     label: strings.lecture_table_titles_subject,
   },
-  //   {
-  //     id: "arrangement",
-  //     numeric: true,
-  //     disablePadding: false,
-  //     label: "Arrangement",
-  //   },
 ];
 
 function EnhancedTableHead(props) {
@@ -224,7 +218,6 @@ EnhancedTableToolbar.propTypes = {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // width: "100%",
     margin: 10,
   },
   paper: {
@@ -233,7 +226,6 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
   },
   table: {
-    // minWidth: 750,
   },
   visuallyHidden: {
     border: 0,
@@ -248,7 +240,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// Lecture Table Export
 export default function LectureTable({ lectures, setLectures }) {
   const rows = lectures
     ? lectures.map((lecture) =>
@@ -373,7 +364,6 @@ export default function LectureTable({ lectures, setLectures }) {
                         {row.section}
                       </TableCell>
                       <TableCell align="right">{row.subject}</TableCell>
-                      {/* <TableCell align="right">{row.arrangement}</TableCell> */}
                     </TableRow>
                   );
                 })}
