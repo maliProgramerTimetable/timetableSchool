@@ -181,7 +181,7 @@ const EnhancedTableToolbar = (props) => {
           id="tableTitle"
           component="div"
         >
-          Radno Dani
+          Radni Dani
         </Typography>
       )}
 

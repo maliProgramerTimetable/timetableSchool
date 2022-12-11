@@ -57,7 +57,12 @@ const headCells = [
     disablePadding: true,
     label: strings.lecture_table_titles_title,
   },
-  { id: "section", numeric: true, disablePadding: false, label: strings.lecture_table_titles_section },
+  {
+    id: "section",
+    numeric: true,
+    disablePadding: false,
+    label: strings.lecture_table_titles_section,
+  },
   {
     id: "subject",
     numeric: true,
@@ -225,8 +230,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     marginBottom: theme.spacing(2),
   },
-  table: {
-  },
+  table: {},
   visuallyHidden: {
     border: 0,
     clip: "rect(0 0 0 0)",

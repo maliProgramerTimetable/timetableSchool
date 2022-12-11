@@ -15,35 +15,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "20px",
     width: "90%",
   },
-  lectures: {
-    width: "100%",
-    margin: "0% 5%",
-  },
-  genButton: {
-    marginBottom: 25,
-  },
-  wrapper: {
-    position: "relative",
-    display: "flex",
-    justifyContent: "center",
-  },
-  buttonProgress: {
-    position: "absolute",
-    top: "3%",
-  },
-  footer: {
-    marginBottom: 30,
-    fontSize: "1.2rem",
-    letterSpacing: "0.3rem",
-    textAlign: "center",
-    color: "white",
-    "& a": {
-      color: "#791E94",
-      "&:hover": {
-        fontWeight: 700,
-      },
-    },
-  },
   container: {
     display: "flex",
   },
@@ -139,7 +110,7 @@ const WorkingTimeScreen = ({ db }) => {
             setworkingTime={updateDB}
             docs={docs}
           />
-          </div>
+        </div>
       </div>
     </div>
   );

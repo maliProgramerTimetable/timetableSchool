@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme) => ({
     minHeight: 360,
     display: "flex",
     justifyContent: "space-between",
-
   },
   textField: {
     margin: 5,

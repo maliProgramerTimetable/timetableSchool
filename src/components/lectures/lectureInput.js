@@ -32,10 +32,16 @@ const useStyles = makeStyles((theme) => ({
   },
   inputs: {
     marginLeft: 10,
-  }
+  },
 }));
 
-const lectureArrangement = [["1"], ["1 - 1", "2"], ["1 - 1 - 1", "2 - 1"], ["1 - 1 - 1 - 1", "2 - 1 - 1", "2-2"], ["1 - 1 - 1 - 1 - 1", "2 - 1 - 1 - 1", "2-2-1"]];
+const lectureArrangement = [
+  ["1"],
+  ["1 - 1", "2"],
+  ["1 - 1 - 1", "2 - 1"],
+  ["1 - 1 - 1 - 1", "2 - 1 - 1", "2-2"],
+  ["1 - 1 - 1 - 1 - 1", "2 - 1 - 1 - 1", "2-2-1"],
+];
 export default function LectureInput({
   lectures,
   setLectures,
@@ -93,7 +99,7 @@ export default function LectureInput({
   const addButton = () => {
     if (subject && teacher && section && lectureArr) {
       let temp = [...lectures];
-      
+
       if (lectures) {
         if (
           temp.findIndex(
@@ -132,7 +138,7 @@ export default function LectureInput({
             type="number"
             className={classes.textField}
             id="teacher"
-            label= {strings.lecture_table_titles_title}
+            label={strings.lecture_table_titles_title}
             select
             required
             error={!!teacherError}

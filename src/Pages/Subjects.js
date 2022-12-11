@@ -25,35 +25,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     width: "90%",
   },
-  lectures: {
-    width: "100%",
-    margin: "0% 5%",
-  },
-  genButton: {
-    marginBottom: 25,
-  },
-  wrapper: {
-    position: "relative",
-    display: "flex",
-    justifyContent: "center",
-  },
-  buttonProgress: {
-    position: "absolute",
-    top: "3%",
-  },
-  footer: {
-    marginBottom: 30,
-    fontSize: "1.2rem",
-    letterSpacing: "0.3rem",
-    textAlign: "center",
-    color: "white",
-    "& a": {
-      color: "#791E94",
-      "&:hover": {
-        fontWeight: 700,
-      },
-    },
-  },
   container: {
     display: "flex",
   },
@@ -70,78 +41,77 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-const SubjectsScreen = ({db}) => {
-  if(!localStorage.getItem("uid")){
-		window.location.href = "/login"
-	}
+const SubjectsScreen = ({ db }) => {
+  if (!localStorage.getItem("uid")) {
+    window.location.href = "/login";
+  }
   const userRef = db.collection(JSON.parse(localStorage.getItem("uid")));
 
-    const classes = useStyles();
-   const [subjects, setSubjects] = useState([]);
-    const [sections, setSections] = useState([]);
-    const [teachers, setTeachers] = useState([]);
-    const [lectures, setLectures] = useState([]);
-  
-    const updateDB = (sub, docType) => {
-      switch (docType) {
-        case "subjects":
-          setSubjects(sub);
-          break;
-        case "teachers":
-          setTeachers(sub);
-          break;
-        case "lectures":
-          setLectures(sub);
-          break;
-        default:
-          console.error("Wrong Document");
-      }
-      userRef
-        .doc(docType)
-        .set(docType === docs.workingTime ? sub : { ...Object(sub) })
-        .then((e) => console.log("saved"))
-        .catch((e) => console.error("error", e));
-    };
-  
-    const fetchRecords = useCallback(async () => {
-      const db = firebase.firestore();
-      const userRef = db.collection(JSON.parse(localStorage.getItem("uid")));
-      userRef
-        .get()
-        .then((snapShot) => {
-          snapShot.forEach((doc) => {
-            const records =
-              doc.id === docs.workingTime
-                ? doc.data()
-                : Object.values(doc.data());
-            switch (doc.id) {
-              case docs.sections:
-                setSections(records);
-                break;
-              case docs.subjects:
-                setSubjects(records);
-                break;
-              case docs.teachers:
-                setTeachers(records);
-                break;
-              case docs.lectures:
-                setLectures(records);
-                break;
-              default:
-                console.error("Wrong Document");
-            }
-          });
-        })
-        .catch((e) => console.log("err", e));
-    }, []);
-  
-    React.useEffect(() => {
-      fetchRecords();
-    }, [fetchRecords]);
+  const classes = useStyles();
+  const [subjects, setSubjects] = useState([]);
+  const [sections, setSections] = useState([]);
+  const [teachers, setTeachers] = useState([]);
+  const [lectures, setLectures] = useState([]);
 
-    return (
-      <div className={classes.container} >
+  const updateDB = (sub, docType) => {
+    switch (docType) {
+      case "subjects":
+        setSubjects(sub);
+        break;
+      case "teachers":
+        setTeachers(sub);
+        break;
+      case "lectures":
+        setLectures(sub);
+        break;
+      default:
+        console.error("Wrong Document");
+    }
+    userRef
+      .doc(docType)
+      .set(docType === docs.workingTime ? sub : { ...Object(sub) })
+      .then((e) => console.log("saved"))
+      .catch((e) => console.error("error", e));
+  };
+
+  const fetchRecords = useCallback(async () => {
+    const db = firebase.firestore();
+    const userRef = db.collection(JSON.parse(localStorage.getItem("uid")));
+    userRef
+      .get()
+      .then((snapShot) => {
+        snapShot.forEach((doc) => {
+          const records =
+            doc.id === docs.workingTime
+              ? doc.data()
+              : Object.values(doc.data());
+          switch (doc.id) {
+            case docs.sections:
+              setSections(records);
+              break;
+            case docs.subjects:
+              setSubjects(records);
+              break;
+            case docs.teachers:
+              setTeachers(records);
+              break;
+            case docs.lectures:
+              setLectures(records);
+              break;
+            default:
+              console.error("Wrong Document");
+          }
+        });
+      })
+      .catch((e) => console.log("err", e));
+  }, []);
+
+  React.useEffect(() => {
+    fetchRecords();
+  }, [fetchRecords]);
+
+  return (
+    <div className={classes.container}>
       <div className={classes.sidebar}>
         <PrimaryAppBar predmeti={true} />
       </div>
@@ -174,7 +144,7 @@ const SubjectsScreen = ({db}) => {
             />
           </div>
 
-          <div  className={classes.innerCradHolder}>
+          <div className={classes.innerCradHolder}>
             <LectureInput
               lectures={lectures}
               setLectures={updateDB}
@@ -192,7 +162,7 @@ const SubjectsScreen = ({db}) => {
         </div>
       </div>
     </div>
-    );
+  );
 };
 
-export default SubjectsScreen
+export default SubjectsScreen;

@@ -12,22 +12,19 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
   },
-  title: {
-    fontSize: 14,
-  },
   textField: {
     margin: 5,
   },
   inputs: {
-    marginLeft: "20%", 
+    marginLeft: "20%",
     marginTop: "3%",
   },
   button: {
-    width:"95%",
-    marginLeft:"5px",
+    width: "95%",
+    marginLeft: "5px",
     marginTop: "10px",
     height: "50px",
-  },  
+  },
   icon: {
     fontSize: 300,
     color: "#e0e0e0",

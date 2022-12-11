@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  TextField,
-  Card,
-  Button,
-  MenuItem,
-} from "@material-ui/core";
+import { TextField, Card, Button, MenuItem } from "@material-ui/core";
 import docs from "../../constants/docs";
 import { strings } from "../../translation/strings";
 
@@ -87,99 +82,101 @@ export default function WorkingtimeInput({
     <Card className={classes.root}>
       <div className={classes.content}>
         <div className={classes.inputs}>
-        <h3 style={{ textAlign: "left" }}>{strings.working_days_periods_label}</h3>
-        <div>
-          <TextField
-            type="number"
-            className={classes.textField}
-            id="day"
-            label="Dan"
-            select
-            required
-            error={!!dayError}
-            helperText={dayError}
-            onChange={dayChange}
-            value={day}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-          >
-            {Object.entries(workingTime)
-              .filter((e) => e[1] === 0)
-              .map((option) => (
-                <MenuItem key={option[0]} value={option[0]}>
-                  {option[0]}
+          <h3 style={{ textAlign: "left" }}>
+            {strings.working_days_periods_label}
+          </h3>
+          <div>
+            <TextField
+              type="number"
+              className={classes.textField}
+              id="day"
+              label="Dan"
+              select
+              required
+              error={!!dayError}
+              helperText={dayError}
+              onChange={dayChange}
+              value={day}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="outlined"
+            >
+              {Object.entries(workingTime)
+                .filter((e) => e[1] === 0)
+                .map((option) => (
+                  <MenuItem key={option[0]} value={option[0]}>
+                    {option[0]}
+                  </MenuItem>
+                ))}
+            </TextField>
+          </div>
+
+          <div>
+            <TextField
+              type="number"
+              className={classes.textField}
+              id="periods"
+              label="Br časova"
+              select
+              required
+              error={!!periodError}
+              helperText={periodError}
+              onChange={periodChange}
+              value={period}
+              onKeyDown={(e) => {
+                if (e.keyCode === 13) addButton();
+              }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="outlined"
+            >
+              {[1, 2, 3, 4, 5, 6, 7].map((option) => (
+                <MenuItem key={option} value={option}>
+                  {option}
                 </MenuItem>
               ))}
-          </TextField>
-        </div>
-
-        <div>
-          <TextField
-            type="number"
-            className={classes.textField}
-            id="periods"
-            label="Br časova"
-            select
-            required
-            error={!!periodError}
-            helperText={periodError}
-            onChange={periodChange}
-            value={period}
-            onKeyDown={(e) => {
-              if (e.keyCode === 13) addButton();
-            }}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
+            </TextField>
+          </div>
+          <div>
+            <TextField
+              type="number"
+              className={classes.textField}
+              id="days"
+              label="Br razreda"
+              select
+              required
+              value={sections.length}
+              onKeyDown={(e) => {
+                if (e.keyCode === 13) addButton();
+              }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="outlined"
+            >
+              {
+                <MenuItem key={"rooms"} value={sections.length}>
+                  {sections.length}
+                </MenuItem>
+              }
+            </TextField>
+          </div>
+          <Button
+            className={classes.button}
+            variant="contained"
+            color="primary"
+            size="medium"
+            onClick={addButton}
           >
-            {[1, 2, 3, 4, 5, 6, 7].map((option) => (
-              <MenuItem key={option} value={option}>
-                {option}
-              </MenuItem>
-            ))}
-          </TextField>
-        </div>
-        <div>
-          <TextField
-            type="number"
-            className={classes.textField}
-            id="days"
-            label="Br razreda"
-            select
-            required
-            value={sections.length}
-            onKeyDown={(e) => {
-              if (e.keyCode === 13) addButton();
-            }}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-          >
-            {
-              <MenuItem key={"rooms"} value={sections.length}>
-                {sections.length}
-              </MenuItem>
-            }
-          </TextField>
-        </div>
-        <Button
-          className={classes.button}
-          variant="contained"
-          color="primary"
-          size="medium"
-          onClick={addButton}
-        >
-          {strings.working_days_button}
-        </Button>
+            {strings.working_days_button}
+          </Button>
         </div>
         <div>
           <i className={`fa-solid fa-calendar-days ${classes.icon}`}></i>
         </div>
-        </div>
+      </div>
     </Card>
   );
 }

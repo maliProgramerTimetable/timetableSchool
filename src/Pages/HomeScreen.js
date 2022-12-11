@@ -8,16 +8,6 @@ import docs from "../constants/docs";
 import firebase from "firebase";
 
 const useStyles = makeStyles((theme) => ({
-  cardHolder: {
-    display: "flex",
-    flexFlow: "row wrap",
-    justifyContent: "space-evenly",
-    marginTop: "20px",
-  },
-  lectures: {
-    width: "100%",
-    margin: "0% 5%",
-  },
   genButton: {
     margin: 25,
   },
@@ -27,21 +17,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
   buttonProgress: {
+    margin: 25,
     position: "absolute",
     top: "3%",
-  },
-  footer: {
-    marginBottom: 30,
-    fontSize: "1.2rem",
-    letterSpacing: "0.3rem",
-    textAlign: "center",
-    color: "white",
-    "& a": {
-      color: "#791E94",
-      "&:hover": {
-        fontWeight: 700,
-      },
-    },
   },
   container: {
     display: "flex",
@@ -148,7 +126,7 @@ const HomeScreen = () => {
             onClick={generateButton}
             disabled={!lectures.length || loading}
           >
-            Generate Timetable
+            Generiši Raspored
           </Button>
           {loading && (
             <CircularProgress
