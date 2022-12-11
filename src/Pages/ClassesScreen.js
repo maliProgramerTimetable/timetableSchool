@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   cardHolder: {
     display: "flex",
     flexDirection: "column",
-    width: "100%",
+    width: "90%",
     marginTop: "20px",
   },
   lectures: {
@@ -56,6 +56,9 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100%",
     marginLeft: "200px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
 }));
 

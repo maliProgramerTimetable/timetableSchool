@@ -17,23 +17,22 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 20,
   },
   content: {
-    [theme.breakpoints.down("sm")]: {
-      padding: "5% 10%",
-    },
-    [theme.breakpoints.up("md")]: {
-      display: "flex",
-      justifyContent: "space-around",
-    },
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   textField: {
     margin: 5,
     minWidth: 200,
   },
   button: {
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: "5%",
-    },
+    width: "30%",
+    height: "55px",
+    marginLeft: 30,
   },
+  inputs: {
+    marginLeft: 10,
+  }
 }));
 
 const lectureArrangement = [["1"], ["1 - 1", "2"], ["1 - 1 - 1", "2 - 1"], ["1 - 1 - 1 - 1", "2 - 1 - 1", "2-2"], ["1 - 1 - 1 - 1 - 1", "2 - 1 - 1 - 1", "2-2-1"]];
@@ -128,7 +127,7 @@ export default function LectureInput({
     <Card className={classes.root}>
       <CardContent className={classes.content}>
         <h3 style={{ textAlign: "left" }}>{strings.add_lectures_title}</h3>
-        <div>
+        <div className={classes.inputs}>
           <TextField
             type="number"
             className={classes.textField}

@@ -54,13 +54,13 @@ const headCells = [
     id: "day",
     numeric: false,
     disablePadding: true,
-    label: "Day",
+    label: "Dan",
   },
   {
     id: "lectureCount",
     numeric: true,
     disablePadding: false,
-    label: "Lectures",
+    label: "Br časova",
   },
 ];
 
@@ -147,13 +147,8 @@ const useToolbarStyles = makeStyles((theme) => ({
 
 const EnhancedTableToolbar = (props) => {
   const classes = useToolbarStyles();
-  const {
-    numSelected,
-    selected,
-    setSelected,
-    workingTime,
-    setworkingTime,
-  } = props;
+  const { numSelected, selected, setSelected, workingTime, setworkingTime } =
+    props;
 
   const deleteRow = () => {
     let temp = { ...workingTime };
@@ -186,7 +181,7 @@ const EnhancedTableToolbar = (props) => {
           id="tableTitle"
           component="div"
         >
-          Working Days
+          Radno Dani
         </Typography>
       )}
 
@@ -220,8 +215,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     marginBottom: theme.spacing(2),
   },
-  table: {
-  },
+  table: {},
   visuallyHidden: {
     border: 0,
     clip: "rect(0 0 0 0)",

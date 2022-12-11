@@ -47,12 +47,12 @@ export default function Timetable({ timeTable, section }) {
         <TableHead>
           <TableRow>
             <StyledTableCell key={"sec" + section}>
-              Section {section}
+              Razred: {section}
             </StyledTableCell>
             {timeTable ? (
               timeTable[0]?.map((day, i) => (
                 <StyledTableCell key={"lectures" + section + i} align="right">
-                  Lecture {i + 1}
+                  Čas: {i + 1}
                 </StyledTableCell>
               ))
             ) : (
