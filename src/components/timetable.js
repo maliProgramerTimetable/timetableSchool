@@ -11,11 +11,12 @@ import Paper from "@material-ui/core/Paper";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: "#0052bc",
     color: theme.palette.common.white,
   },
   body: {
     fontSize: 14,
+   // border: "1px solid black",
   },
 }))(TableCell);
 

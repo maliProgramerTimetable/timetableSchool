@@ -10,6 +10,7 @@ import firebase from "firebase";
 const useStyles = makeStyles((theme) => ({
   genButton: {
     margin: 25,
+    background: "#5cb85c"
   },
   wrapper: {
     position: "relative",
@@ -117,6 +118,7 @@ const HomeScreen = () => {
         <PrimaryAppBar raspored={true} />
       </div>
       <div className={classes.content}>
+        <GenerateTimetable timetable={timetable} />
         <div className={classes.wrapper}>
           <Button
             variant="contained"
@@ -136,7 +138,6 @@ const HomeScreen = () => {
             />
           )}
         </div>
-        <GenerateTimetable timetable={timetable} />
       </div>
     </div>
   );

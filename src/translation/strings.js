@@ -33,7 +33,7 @@ export const strings = {
     lecture_table_titles_subject:"Predmet",
     lecture_arrangement_label:"Podjela časova",
     working_days_periods_label:"Radni dani i časovi",
-    working_days_button:"+DODAJ",
+    working_days_button:"+ DODAJ",
     working_days_label:"Radni Dani",
     working_days_day_label:"Dan",
     working_days_lecture_label:"Broj Časova",
