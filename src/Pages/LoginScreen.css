@@ -111,4 +111,12 @@
   .lock-closed-outline {
     padding-left: 2px;
   }
-  
+  .err{
+    width: 200px;
+    height: 20px;
+    text-align: center;
+    color: red;
+    font-size: 0.8em;
+    margin-top: -1em;
+    margin-left: 1em;
+  }

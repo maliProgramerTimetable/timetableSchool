@@ -35,6 +35,10 @@ const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: 360,
   },
+  section: {
+    fontWeight: "bold",
+    fontSize: 18,
+  }
 }));
 
 const weekDays = ["PON  ", "UTO", "SRI", "ČET", "PET", "SUB"];
@@ -47,12 +51,12 @@ export default function Timetable({ timeTable, section }) {
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell key={"sec" + section}>
-              Razred: {section}
+            <StyledTableCell key={"sec" + section} className={classes.section} >
+              {section}
             </StyledTableCell>
             {timeTable ? (
               timeTable[0]?.map((day, i) => (
-                <StyledTableCell key={"lectures" + section + i} align="right">
+                <StyledTableCell key={"lectures" + section + i} align="left">
                   Čas: {i + 1}
                 </StyledTableCell>
               ))
@@ -72,7 +76,7 @@ export default function Timetable({ timeTable, section }) {
                 {weekDays[i]}
               </StyledTableCell>
               {row.map((r, j) => (
-                <StyledTableCell key={r + j + section} align="right">
+                <StyledTableCell key={r + j + section} align="left">
                   {r ? r : strings.free_label}
                 </StyledTableCell>
               ))}
