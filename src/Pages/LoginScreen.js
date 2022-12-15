@@ -14,11 +14,11 @@ const LoginScreen = () => {
       })
       .catch((error) => {
         if(error.message === "The password is invalid or the user does not have a password."){
-          setError("Wrong Password");
+          setError("Pogrešna Šifra");
         }else if(error.message === "The email address is badly formatted."){
-          setError("Bad Email");
+          setError("Molimo unesite Email");
         }else if(error.message === "There is no user record corresponding to this identifier. The user may have been deleted."){
-          setError("No User Found");
+          setError("Korisnik ne postoji");
         }else{
           setError(error.message);
         }
