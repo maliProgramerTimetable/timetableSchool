@@ -47,6 +47,7 @@ export default function PrimaryAppBar({
   razredi,
   radniDani,
   raspored,
+  ucionice,
 }) {
   const [user, setUser] = useState(null);
   const classes = useStyles();
@@ -94,6 +95,12 @@ export default function PrimaryAppBar({
             className={`${classes.link} ${radniDani ? classes.active : ""}`}
           >
             Radni dani
+          </a>
+          <a
+            href="/ucionice"
+            className={`${classes.link} ${ucionice ? classes.active : ""}`}
+          >
+            Učionice
           </a>
           <a
             href="/"

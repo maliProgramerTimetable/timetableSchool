@@ -11,6 +11,7 @@ import SubjectsScreen from "./Pages/Subjects";
 import ClassesScreen from "./Pages/ClassesScreen";
 import WorkingTimeScreen from "./Pages/WorkingTimeScreen";
 import LoginScreen from "./Pages/LoginScreen";
+import Ucionice from "./Pages/Ucionice";
 
 const db = firebase.firestore();
 
@@ -34,6 +35,10 @@ const routes = createBrowserRouter([
   {
     path: "/radni-dani",
     element: <WorkingTimeScreen db={db} />,
+  },
+  {
+    path: "/ucionice",
+    element: <Ucionice />,
   },
 ]);
 
