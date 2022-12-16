@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
   inputs: {
     marginLeft: "20%",
     marginTop: "3%",
+    width: 250,
   },
   icon: {
     fontSize: 400,
@@ -25,11 +26,11 @@ const useStyles = makeStyles((theme) => ({
   },
   textField: {
     margin: 5,
-    width: 250,
+    width: "75%",
   },
   button: {
     margin: 5,
-    width: 250,
+    width: "75%",
     height: 50,
   },
 }));

@@ -363,7 +363,11 @@ export default function SectionTable({ sections, setSections }) {
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
           count={rows.length}
+          labelDisplayedRows={({ from, to, count }) =>
+            `${from}-${to} od ${count !== -1 ? count : `više od ${to}`}`
+          }
           rowsPerPage={rowsPerPage}
+          labelRowsPerPage={"Redova po stranici:"}
           page={page}
           onChangePage={handleChangePage}
           onChangeRowsPerPage={handleChangeRowsPerPage}
