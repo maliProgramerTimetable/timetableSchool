@@ -124,7 +124,7 @@ const HomeScreen = () => {
             variant="contained"
             color="secondary"
             size="large"
-            className={classes.genButton}
+            className={`${classes.genButton} btn`}
             onClick={generateButton}
             disabled={!lectures.length || loading}
           >

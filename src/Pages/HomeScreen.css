@@ -44,3 +44,6 @@ input[type="url"],
 .border-box {
   box-sizing: content-box;
 }
+.btn:hover{
+  background-color:#5cb85c !important;
+}
