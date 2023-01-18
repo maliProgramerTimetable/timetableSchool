@@ -7,7 +7,7 @@
 <p align="center">The challenge was to make a Web App that can automatically make a timetable for a whole school</p>
 <p align="center">In the end We made 3 Apps (Web app for the school, Web app for the Admin and a Mobile app for teachers and stundents)</p>
 <p align="center">We won 2nd place</p>
-<p align="center">[Backend]</p>
+<a href="https://github.com/maliProgramerTimetable/timeTableBackend" target="_blank" align="center">Backend</a>
 <p align="center">[Admin]</p>
 <p align="center">[Mobile App]</p>
 
