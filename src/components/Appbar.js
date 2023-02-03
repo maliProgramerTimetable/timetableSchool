@@ -97,12 +97,6 @@ export default function PrimaryAppBar({
             Radni dani
           </a>
           <a
-            href="/ucionice"
-            className={`${classes.link} ${ucionice ? classes.active : ""}`}
-          >
-            Učionice
-          </a>
-          <a
             href="/"
             className={`${classes.link} ${raspored ? classes.active : ""}`}
           >

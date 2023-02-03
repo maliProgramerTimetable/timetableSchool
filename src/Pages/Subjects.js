@@ -113,7 +113,7 @@ const SubjectsScreen = ({ db }) => {
   return (
     <div className={classes.container}>
       <div className={classes.sidebar}>
-        <PrimaryAppBar predmeti={true} />
+        <PrimaryAppBar predmeti />
       </div>
       <div className={classes.content}>
         <div className={classes.cardHolder}>

@@ -119,30 +119,4 @@
     margin-top: -1em;
     margin-left: 1em;
   }
-  .divptaga {
-    animation-name: bounce;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-  }
-  .ptag {
-    font-weight: 900;
-    font-size: 90px;
-    color: white;
-    animation-name: bounce;
-  }
-  @keyframes bounce {
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
-      transform: translateY(0);
-    }
-    40% {
-      transform: translateY(-30px);
-    }
-    60% {
-      transform: translateY(-15px);
-    }
-  }
   
